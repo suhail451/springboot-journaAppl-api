@@ -21,6 +21,47 @@ A simple yet powerful Spring Boot REST API that allows users to create and manag
 - **IDE Recommended**: IntelliJ IDEA or Eclipse
 
 ---
+## 🌐 Server URL
+
+Once the project runs successfully, the Spring Boot server will start at:
+http://localhost:8080/
+
+
+---
+
+## 🧪 Testing the API with Postman
+
+You can use [Postman](https://www.postman.com/) or any REST client to test the endpoints.
+
+### 🔹 GET Request: Fetch All Journal Entries
+
+- **Method**: `GET`  
+- **URL**: `http://localhost:8080/journal`
+
+#### ✅ Steps:
+1. Open Postman.
+2. Set method to `GET`.
+3. Enter the URL: `http://localhost:8080/journal`
+4. Click **Send**.
+5. You should receive a JSON array of all journal entries.
+
+---
+
+### 🔹 POST Request: Create a New Journal Entry
+
+- **Method**: `POST`  
+- **URL**: `http://localhost:8080/journal`
+- **Headers**: `Content-Type: application/json`
+- **Body (raw JSON)**:
+
+```json
+{
+  "id": 1,
+  "title": "First Entry",
+  "content": "This is my first journal entry!"
+}
+
+
 
 ## 🔧 How to Run the Project Locally
 
@@ -34,22 +75,6 @@ cd journal-app-api
 # Run the application using Maven
 mvn spring-boot:run
 
-Once it runs successfully, the server will start on:
-http://localhost:8080
 
-## Testing with Postman
-Open Postman.
 
-For GET request:
 
-Choose GET, paste http://localhost:8080/journal → Hit Send.
-
-For POST request:
-
-Choose POST, paste http://localhost:8080/journal
-
-Go to Body → raw → JSON, and paste the JSON data shown above.
-
-Hit Send.
-
-You should see the new entry reflected in the GET response.
