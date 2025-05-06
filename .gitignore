@@ -1,0 +1,37 @@
+# Maven build folder
+/target/
+
+# Logs
+*.log
+
+# IDE folders
+/.idea/
+/*.iml
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# IntelliJ-specific files
+*.iws
+*.ipr
+
+# Environment files
+.env
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Compiled class files
+*.class
+
+# Dependency caches
+/.mvn/
+/.settings/
+/bin/
+/out/
+
+# VS Code settings if you use it too
+.vscode/
