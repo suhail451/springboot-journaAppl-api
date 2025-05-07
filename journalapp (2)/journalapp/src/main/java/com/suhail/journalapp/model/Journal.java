@@ -1,25 +1,37 @@
 package com.suhail.journalapp.model;
-import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "journals")
 public class Journal {
-    private int id;
+
+    @Id
+    private String id; // MongoDB uses String (ObjectId) by default
+
     private String name;
     private String content;
 
-
-   public Journal(int id,String name, String content){
-        this.id=id;
-        this.name=name;
-        this.content=content;
-
-
+    public Journal() {
+        // No-arg constructor is required for Spring Data MongoDB
     }
 
-    public int getId() {
+    public Journal(String name, String content) {
+        this.name = name;
+        this.content = content;
+    }
+
+    public Journal(String id, String name, String content) {
+        this.id = id;
+        this.name = name;
+        this.content = content;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -29,7 +41,6 @@ public class Journal {
 
     public void setName(String name) {
         this.name = name;
-
     }
 
     public String getContent() {

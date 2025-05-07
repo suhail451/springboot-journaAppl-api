@@ -1,5 +1,7 @@
 package com.suhail.journalapp.service;
 
+import com.suhail.journalapp.repository.JournalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.suhail.journalapp.model.Journal;
 
@@ -8,30 +10,44 @@ import java.util.*;
 
 @Service
 public class JournalService {
-    private Map<Integer ,Journal> journalMap= new HashMap<>();
+
+@Autowired
+private JournalRepository journalRepository;
+
 
 //   add a journal
     public void addJournal(Journal journal){
-        journalMap.put(journal.getId(),journal);
-
+        journalRepository.save(journal);
     }
+
+
 //    get all journal at once
     public List<Journal> getAllJournal(){
-        return new ArrayList<>(journalMap.values());
+        return journalRepository.findAll();
     }
+
 //    get journal by id
-    public Journal getJournalById(int id){
-return journalMap.get(id);
+    public Journal getJournalById(String id){
+        return journalRepository.findById(id).orElse(null);
     }
+
+
 //    delete journal by id
-    public boolean deleteJournalById(int id){
-        return journalMap.remove(id) != null;
+    public boolean deleteJournalById(String id){
+        journalRepository.deleteById(id);
+        return true;
     }
-    public void updateJournal(int id, Journal updatedJournal) {
-        if (journalMap.containsKey(id)) {
-            updatedJournal.setId(id); // ensure ID stays consistent
-            journalMap.put(id, updatedJournal);
+
+
+//    update journal by id
+    public Journal updateJournal(String id, Journal updatedJournal) {
+        Journal existing = journalRepository.findById(id).orElse(null);
+        if (existing != null) {
+            existing.setName(updatedJournal.getName());
+            existing.setContent(updatedJournal.getContent());
+            return journalRepository.save(existing);
         }
+        return null;
     }
 
 
