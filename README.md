@@ -19,7 +19,7 @@ A simple Spring Boot RESTful API for managing journal entries. Built using **Jav
 - **Java JDK**: 17
 - **Spring Boot**: 2.7.x
 - **Build Tool**: Maven
-- **Data Store**: In-Memory (HashMap)
+- **Data Store**: NoSQL Mangodv
 - **Frameworks**: Spring Web
 
 ---
